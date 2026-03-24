@@ -1,0 +1,174 @@
+/* =====================================================
+   Lua — Onboarding
+   ===================================================== */
+.onboarding-page {
+  display: flex;
+  min-height: 100dvh;
+  padding: var(--space-6) var(--space-4) var(--space-8);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.onboarding-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.onboarding-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Progress bar */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+  width: 20%;
+}
+
+.progress-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* Steps */
+.step {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.step.active {
+  display: flex;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.step h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.step-desc {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-top: calc(var(--space-2) * -1);
+}
+
+/* Duration picker */
+.duration-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6) 0;
+}
+
+.duration-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  color: var(--color-text);
+}
+.duration-btn:hover { background: var(--color-primary-alpha); color: var(--color-primary); }
+.duration-btn:active { transform: scale(0.92); }
+
+.duration-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.duration-display span:first-child {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.duration-unit {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Options grid */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.option-btn {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  text-align: left;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.option-btn:hover { border-color: var(--color-primary); }
+.option-btn.selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-alpha);
+}
+
+.option-icon {
+  grid-row: span 2;
+  font-size: 1.5rem;
+}
+
+.option-label {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.option-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Nav */
+.onboarding-nav {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  margin-top: auto;
+}
+.onboarding-nav .btn-primary { flex: 1; }

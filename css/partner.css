@@ -1,0 +1,218 @@
+/* =====================================================
+   Lua — Partner Page
+   ===================================================== */
+.partner-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-8) 0;
+}
+
+.partner-empty-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.partner-empty h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.partner-empty p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  max-width: 280px;
+}
+
+/* Invite link box */
+.invite-link-box {
+  background: var(--color-surface);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.invite-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.invite-link-row {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.invite-link-row input {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.invite-expiry {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-disabled);
+}
+
+/* Partner card */
+.partner-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+}
+
+.partner-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-alpha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.partner-info {
+  flex: 1;
+}
+
+.partner-name {
+  font-weight: 700;
+  font-size: var(--font-size-base);
+}
+
+.partner-joined {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Permissions */
+.partner-permissions,
+.partner-notifications {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+
+.permission-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.permission-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+}
+.permission-item:last-child { border-bottom: none; }
+
+.perm-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* Toggle switch */
+.toggle {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 26px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  position: relative;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  flex-shrink: 0;
+}
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+.toggle:checked {
+  background: var(--color-primary);
+}
+.toggle:checked::after {
+  transform: translateX(18px);
+}
+
+/* Partner view (readonly for partner) */
+.partner-view-header {
+  text-align: center;
+  padding: var(--space-6) 0 var(--space-4);
+}
+.partner-view-name {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+}
+.partner-view-header p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.partner-view-phase {
+  background: var(--color-primary-alpha);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+.pv-phase-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+.pv-phase-name {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+}
+.pv-cycle-day {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+.pv-next-period {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}

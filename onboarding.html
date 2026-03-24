@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lua — Configuração Inicial</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#C2185B" />
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/onboarding.css" />
+</head>
+<body class="onboarding-page">
+  <div class="onboarding-container">
+    <div class="onboarding-header">
+      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="progress-label" id="progress-label">1 de 5</span>
+      </div>
+    </div>
+
+    <!-- Step 1: Last period -->
+    <div class="step active" data-step="1">
+      <div class="step-icon">🩸</div>
+      <h2>Quando começou o teu último período?</h2>
+      <p class="step-desc">Usamos esta data para calcular o teu ciclo.</p>
+      <div class="form-group">
+        <label for="last-period-date">Data de início</label>
+        <input type="date" id="last-period-date" name="last_period_date" required />
+      </div>
+    </div>
+
+    <!-- Step 2: Period duration -->
+    <div class="step" data-step="2">
+      <div class="step-icon">📅</div>
+      <h2>Quantos dias dura a tua menstruação?</h2>
+      <p class="step-desc">Em média, a menstruação dura entre 3 e 7 dias.</p>
+      <div class="duration-picker">
+        <button class="duration-btn minus" aria-label="Diminuir">−</button>
+        <div class="duration-display">
+          <span id="period-duration-value">5</span>
+          <span class="duration-unit">dias</span>
+        </div>
+        <button class="duration-btn plus" aria-label="Aumentar">+</button>
+      </div>
+      <input type="hidden" id="period-duration" name="period_duration" value="5" />
+    </div>
+
+    <!-- Step 3: Cycle length -->
+    <div class="step" data-step="3">
+      <div class="step-icon">🔄</div>
+      <h2>Qual é a duração do teu ciclo?</h2>
+      <p class="step-desc">O ciclo é contado desde o início de um período até ao início do seguinte. A média é 28 dias.</p>
+      <div class="duration-picker">
+        <button class="duration-btn minus" aria-label="Diminuir">−</button>
+        <div class="duration-display">
+          <span id="cycle-length-value">28</span>
+          <span class="duration-unit">dias</span>
+        </div>
+        <button class="duration-btn plus" aria-label="Aumentar">+</button>
+      </div>
+      <input type="hidden" id="cycle-length" name="cycle_length" value="28" />
+    </div>
+
+    <!-- Step 4: Regularity -->
+    <div class="step" data-step="4">
+      <div class="step-icon">📊</div>
+      <h2>O teu ciclo é regular?</h2>
+      <p class="step-desc">Isto ajuda-nos a fazer previsões mais precisas.</p>
+      <div class="options-grid">
+        <button class="option-btn" data-value="very_regular">
+          <span class="option-icon">✅</span>
+          <span class="option-label">Muito regular</span>
+          <span class="option-desc">Varia menos de 2 dias</span>
+        </button>
+        <button class="option-btn" data-value="mostly_regular">
+          <span class="option-icon">🔁</span>
+          <span class="option-label">Maioritariamente regular</span>
+          <span class="option-desc">Varia 2–5 dias</span>
+        </button>
+        <button class="option-btn" data-value="irregular">
+          <span class="option-icon">〰️</span>
+          <span class="option-label">Irregular</span>
+          <span class="option-desc">Varia mais de 5 dias</span>
+        </button>
+      </div>
+      <input type="hidden" id="regularity" name="regularity" value="" />
+    </div>
+
+    <!-- Step 5: Goal -->
+    <div class="step" data-step="5">
+      <div class="step-icon">🎯</div>
+      <h2>Qual é o teu principal objetivo?</h2>
+      <p class="step-desc">Personalizamos a app com base nos teus objetivos.</p>
+      <div class="options-grid">
+        <button class="option-btn" data-value="track">
+          <span class="option-icon">📝</span>
+          <span class="option-label">Registar o ciclo</span>
+          <span class="option-desc">Acompanhar sintomas e fases</span>
+        </button>
+        <button class="option-btn" data-value="conceive">
+          <span class="option-icon">🌱</span>
+          <span class="option-label">Engravidar</span>
+          <span class="option-desc">Identificar a janela fértil</span>
+        </button>
+        <button class="option-btn" data-value="avoid">
+          <span class="option-icon">🛡️</span>
+          <span class="option-label">Evitar gravidez</span>
+          <span class="option-desc">Contraceção natural</span>
+        </button>
+        <button class="option-btn" data-value="health">
+          <span class="option-icon">💪</span>
+          <span class="option-label">Saúde geral</span>
+          <span class="option-desc">Bem-estar e autoconhecimento</span>
+        </button>
+      </div>
+      <input type="hidden" id="goal" name="goal" value="" />
+    </div>
+
+    <div class="onboarding-nav">
+      <button class="btn btn-ghost" id="btn-back" hidden>Voltar</button>
+      <button class="btn btn-primary" id="btn-next">Continuar</button>
+    </div>
+
+    <div id="onboarding-error" class="form-error" role="alert" hidden></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/onboarding.js"></script>
+</body>
+</html>

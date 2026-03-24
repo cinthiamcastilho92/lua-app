@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lua — Registo Diário</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#C2185B" />
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/daily-log.css" />
+</head>
+<body class="app-page">
+
+  <header class="app-header">
+    <div class="app-header-inner">
+      <button class="btn-icon" onclick="history.back()" aria-label="Voltar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <h1 class="header-title">Registo de Hoje</h1>
+      <div style="width:36px"></div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="log-date" id="log-date"></div>
+
+    <form id="daily-log-form" novalidate>
+
+      <!-- Flow -->
+      <section class="log-section">
+        <h2 class="log-section-title">
+          <span class="log-icon">🩸</span> Fluxo
+        </h2>
+        <div class="chip-group" role="group" aria-label="Intensidade do fluxo">
+          <label class="chip"><input type="radio" name="flow" value="none" /><span>Sem fluxo</span></label>
+          <label class="chip"><input type="radio" name="flow" value="spotting" /><span>Spoting</span></label>
+          <label class="chip"><input type="radio" name="flow" value="light" /><span>Leve</span></label>
+          <label class="chip"><input type="radio" name="flow" value="medium" /><span>Médio</span></label>
+          <label class="chip"><input type="radio" name="flow" value="heavy" /><span>Intenso</span></label>
+        </div>
+      </section>
+
+      <!-- Pain -->
+      <section class="log-section">
+        <h2 class="log-section-title">
+          <span class="log-icon">😣</span> Dor / Cólicas
+        </h2>
+        <div class="pain-slider-wrap">
+          <input type="range" id="pain-level" name="pain_level" min="0" max="10" step="1" value="0" class="pain-slider" />
+          <div class="pain-labels">
+            <span>Sem dor</span>
+            <span>Dor máxima</span>
+          </div>
+          <div class="pain-value">Nível: <strong id="pain-value-display">0</strong></div>
+        </div>
+      </section>
+
+      <!-- Mood -->
+      <section class="log-section">
+        <h2 class="log-section-title">
+          <span class="log-icon">😊</span> Humor
+        </h2>
+        <div class="mood-grid" role="group" aria-label="Humor">
+          <label class="mood-btn"><input type="checkbox" name="mood" value="happy" /><span class="mood-emoji">😄</span><span>Feliz</span></label>
+          <label class="mood-btn"><input type="checkbox" name="mood" value="calm" /><span class="mood-emoji">😌</span><span>Calma</span></label>
+          <label class="mood-btn"><input type="checkbox" name="mood" value="energetic" /><span class="mood-emoji">⚡</span><span>Energética</span></label>
+          <label class="mood-btn"><input type="checkbox" name="mood" value="sad" /><span class="mood-emoji">😢</span><span>Triste</span></label>
+          <label class="mood-btn"><input type="checkbox" name="mood" value="anxious" /><span class="mood-emoji">😰</span><span>Ansiosa</span></label>
+          <label class="mood-btn"><input type="checkbox" name="mood" value="irritable" /><span class="mood-emoji">😠</span><span>Irritada</span></label>
+          <label class="mood-btn"><input type="checkbox" name="mood" value="tired" /><span class="mood-emoji">😴</span><span>Cansada</span></label>
+          <label class="mood-btn"><input type="checkbox" name="mood" value="sensitive" /><span class="mood-emoji">🥺</span><span>Sensível</span></label>
+        </div>
+      </section>
+
+      <!-- Symptoms -->
+      <section class="log-section">
+        <h2 class="log-section-title">
+          <span class="log-icon">🌡️</span> Sintomas
+        </h2>
+        <div class="chip-group" role="group" aria-label="Sintomas">
+          <label class="chip"><input type="checkbox" name="symptoms" value="headache" /><span>Dor de cabeça</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="bloating" /><span>Inchaço</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="breast_tenderness" /><span>Sensib. mamária</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="nausea" /><span>Náusea</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="fatigue" /><span>Fadiga</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="acne" /><span>Acne</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="back_pain" /><span>Dor nas costas</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="insomnia" /><span>Insónia</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="hot_flashes" /><span>Afrontamentos</span></label>
+          <label class="chip"><input type="checkbox" name="symptoms" value="discharge" /><span>Corrimento</span></label>
+        </div>
+      </section>
+
+      <!-- Notes -->
+      <section class="log-section">
+        <h2 class="log-section-title">
+          <span class="log-icon">📝</span> Notas
+        </h2>
+        <textarea id="log-notes" name="notes" rows="3" placeholder="Algo que queiras lembrar hoje…" maxlength="500"></textarea>
+        <div class="char-count"><span id="notes-count">0</span>/500</div>
+      </section>
+
+      <button type="submit" class="btn btn-primary btn-full btn-save">Guardar Registo</button>
+      <div id="log-success" class="form-success" role="status" hidden>Registo guardado com sucesso!</div>
+      <div id="log-error" class="form-error" role="alert" hidden></div>
+    </form>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegação principal">
+    <a href="/dashboard.html" class="nav-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <span>Hoje</span>
+    </a>
+    <a href="/calendar.html" class="nav-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Calendário</span>
+    </a>
+    <a href="/daily-log.html" class="nav-item active" aria-current="page">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span>Registo</span>
+    </a>
+    <a href="/partner.html" class="nav-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <span>Parceiro</span>
+    </a>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/daily-log.js"></script>
+  <script src="/js/sw-register.js"></script>
+</body>
+</html>

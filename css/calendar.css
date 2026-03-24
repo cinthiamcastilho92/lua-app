@@ -1,0 +1,188 @@
+/* =====================================================
+   Lua — Calendar
+   ===================================================== */
+
+/* Legend */
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-3) 0 var(--space-4);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+.legend-dot.phase-menstrual  { background: var(--phase-menstrual); }
+.legend-dot.phase-follicular { background: var(--phase-follicular); }
+.legend-dot.phase-ovulation  { background: var(--phase-ovulation); }
+.legend-dot.phase-luteal     { background: var(--phase-luteal); }
+
+/* Calendar grid */
+.calendar-grid-wrap {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-4);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--color-border);
+  padding: var(--space-2) 0;
+}
+
+.calendar-weekdays span {
+  text-align: center;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+}
+
+/* Day cell */
+.cal-day {
+  background: var(--color-surface);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition-fast);
+  user-select: none;
+}
+
+.cal-day:hover { background: var(--color-primary-alpha); }
+
+.cal-day.empty {
+  background: var(--color-bg);
+  cursor: default;
+}
+
+.cal-day.other-month .cal-day-num {
+  color: var(--color-text-disabled);
+}
+
+.cal-day-num {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.cal-day.today .cal-day-num {
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.cal-day.today::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.cal-day.selected {
+  background: var(--color-primary-alpha);
+}
+
+/* Phase indicator dot */
+.cal-phase-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  margin-top: 1px;
+}
+
+/* Phase background tint */
+.cal-day.phase-menstrual  { background: var(--phase-menstrual-bg); }
+.cal-day.phase-follicular { background: var(--phase-follicular-bg); }
+.cal-day.phase-ovulation  { background: var(--phase-ovulation-bg); }
+.cal-day.phase-luteal     { background: var(--phase-luteal-bg); }
+
+.cal-day.phase-menstrual .cal-phase-dot  { background: var(--phase-menstrual); }
+.cal-day.phase-follicular .cal-phase-dot { background: var(--phase-follicular); }
+.cal-day.phase-ovulation .cal-phase-dot  { background: var(--phase-ovulation); }
+.cal-day.phase-luteal .cal-phase-dot     { background: var(--phase-luteal); }
+
+/* Log dot (has a daily log entry) */
+.cal-log-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-muted);
+  margin-top: 1px;
+}
+
+/* Day detail panel */
+.day-detail {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.day-detail-date {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.day-detail-phase {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  width: fit-content;
+}
+
+.day-detail-log {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.log-chip {
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.no-log {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+}

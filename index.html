@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lua — Controlo do Ciclo Menstrual</title>
+  <meta name="description" content="Acompanha o teu ciclo menstrual com a Lua." />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#C2185B" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-logo">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="var(--color-primary)" opacity="0.15"/>
+        <path d="M32 24c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8c1.105 0 2.16.224 3.117.629C25.457 17.826 24 20.742 24 24s1.457 6.174 3.117 7.371A8.003 8.003 0 0032 24z" fill="var(--color-primary)"/>
+      </svg>
+      <h1>Lua</h1>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="tab-btn active" data-tab="login">Entrar</button>
+      <button class="tab-btn" data-tab="register">Registar</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form" class="auth-form active" novalidate>
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" name="email" autocomplete="email" required placeholder="o.teu@email.com" />
+      </div>
+      <div class="form-group">
+        <label for="login-password">Palavra-passe</label>
+        <input type="password" id="login-password" name="password" autocomplete="current-password" required placeholder="••••••••" />
+      </div>
+      <a href="/forgot-password.html" class="forgot-link">Esqueci a palavra-passe</a>
+      <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+      <div id="login-error" class="form-error" role="alert" hidden></div>
+    </form>
+
+    <!-- Register Form -->
+    <form id="register-form" class="auth-form" novalidate>
+      <div class="form-group">
+        <label for="register-name">Nome</label>
+        <input type="text" id="register-name" name="name" autocomplete="given-name" required placeholder="O teu nome" />
+      </div>
+      <div class="form-group">
+        <label for="register-email">Email</label>
+        <input type="email" id="register-email" name="email" autocomplete="email" required placeholder="o.teu@email.com" />
+      </div>
+      <div class="form-group">
+        <label for="register-password">Palavra-passe</label>
+        <input type="password" id="register-password" name="password" autocomplete="new-password" required placeholder="Mínimo 8 caracteres" minlength="8" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">Criar conta</button>
+      <div id="register-error" class="form-error" role="alert" hidden></div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/sw-register.js"></script>
+</body>
+</html>

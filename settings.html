@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lua — Definições</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#C2185B" />
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/settings.css" />
+</head>
+<body class="app-page">
+
+  <header class="app-header">
+    <div class="app-header-inner">
+      <button class="btn-icon" onclick="history.back()" aria-label="Voltar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <h1 class="header-title">Definições</h1>
+      <div style="width:36px"></div>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <!-- Profile -->
+    <section class="settings-section">
+      <h2 class="settings-section-title">Perfil</h2>
+      <div class="settings-list">
+        <div class="settings-item">
+          <span class="settings-label">Nome</span>
+          <span class="settings-value" id="settings-name">—</span>
+        </div>
+        <div class="settings-item">
+          <span class="settings-label">Email</span>
+          <span class="settings-value" id="settings-email">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cycle Settings -->
+    <section class="settings-section">
+      <h2 class="settings-section-title">Ciclo</h2>
+      <form id="cycle-settings-form" novalidate>
+        <div class="form-group">
+          <label for="s-period-duration">Duração da menstruação (dias)</label>
+          <input type="number" id="s-period-duration" name="period_duration" min="2" max="10" />
+        </div>
+        <div class="form-group">
+          <label for="s-cycle-length">Duração do ciclo (dias)</label>
+          <input type="number" id="s-cycle-length" name="cycle_length" min="21" max="45" />
+        </div>
+        <div class="form-group">
+          <label for="s-regularity">Regularidade</label>
+          <select id="s-regularity" name="regularity">
+            <option value="very_regular">Muito regular</option>
+            <option value="mostly_regular">Maioritariamente regular</option>
+            <option value="irregular">Irregular</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="s-goal">Objetivo</label>
+          <select id="s-goal" name="goal">
+            <option value="track">Registar o ciclo</option>
+            <option value="conceive">Engravidar</option>
+            <option value="avoid">Evitar gravidez</option>
+            <option value="health">Saúde geral</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div id="cycle-settings-success" class="form-success" role="status" hidden>Guardado!</div>
+      </form>
+    </section>
+
+    <!-- Notifications -->
+    <section class="settings-section">
+      <h2 class="settings-section-title">Notificações</h2>
+      <div class="settings-list">
+        <label class="settings-toggle-item">
+          <span class="settings-label">Período previsto</span>
+          <input type="checkbox" class="toggle" id="notif-my-period" />
+        </label>
+        <label class="settings-toggle-item">
+          <span class="settings-label">Lembrete diário de registo</span>
+          <input type="checkbox" class="toggle" id="notif-daily-log" />
+        </label>
+        <label class="settings-toggle-item">
+          <span class="settings-label">Janela fértil</span>
+          <input type="checkbox" class="toggle" id="notif-fertile" />
+        </label>
+      </div>
+      <button class="btn btn-outline" id="btn-enable-push">Ativar notificações push</button>
+    </section>
+
+    <!-- Danger Zone -->
+    <section class="settings-section settings-danger">
+      <h2 class="settings-section-title">Conta</h2>
+      <button class="btn btn-ghost" id="btn-logout">Terminar sessão</button>
+      <button class="btn btn-ghost btn-danger" id="btn-delete-account">Eliminar conta</button>
+    </section>
+
+    <div id="settings-error" class="form-error" role="alert" hidden></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/notifications.js"></script>
+  <script src="/js/settings.js"></script>
+</body>
+</html>

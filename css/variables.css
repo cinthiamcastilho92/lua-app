@@ -1,0 +1,94 @@
+/* =====================================================
+   Lua — Design Tokens
+   ===================================================== */
+:root {
+  /* Brand colors */
+  --color-primary:        #C2185B;
+  --color-primary-light:  #E91E8C;
+  --color-primary-dark:   #880E4F;
+  --color-primary-alpha:  rgba(194, 24, 91, 0.12);
+
+  /* Phase colors */
+  --phase-menstrual:      #E53935;   /* red */
+  --phase-follicular:     #8E24AA;   /* purple */
+  --phase-ovulation:      #F57C00;   /* orange */
+  --phase-luteal:         #1976D2;   /* blue */
+
+  /* Phase bg (soft) */
+  --phase-menstrual-bg:   rgba(229, 57, 53, 0.15);
+  --phase-follicular-bg:  rgba(142, 36, 170, 0.15);
+  --phase-ovulation-bg:   rgba(245, 124, 0, 0.15);
+  --phase-luteal-bg:      rgba(25, 118, 210, 0.15);
+
+  /* Neutral */
+  --color-bg:             #FFF8F9;
+  --color-surface:        #FFFFFF;
+  --color-border:         #F0E0E6;
+  --color-text:           #1A1A2E;
+  --color-text-muted:     #7A6070;
+  --color-text-disabled:  #B0A0A8;
+
+  /* Semantic */
+  --color-success:        #2E7D32;
+  --color-success-bg:     #E8F5E9;
+  --color-error:          #C62828;
+  --color-error-bg:       #FFEBEE;
+  --color-warning:        #EF6C00;
+  --color-warning-bg:     #FFF3E0;
+
+  /* Typography */
+  --font-sans:            'Inter', system-ui, -apple-system, sans-serif;
+  --font-size-xs:         0.75rem;
+  --font-size-sm:         0.875rem;
+  --font-size-base:       1rem;
+  --font-size-lg:         1.125rem;
+  --font-size-xl:         1.25rem;
+  --font-size-2xl:        1.5rem;
+  --font-size-3xl:        2rem;
+
+  /* Spacing */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+
+  /* Radius */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,.10);
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Layout */
+  --nav-height:    64px;
+  --header-height: 56px;
+  --max-width:     430px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:           #120A10;
+    --color-surface:      #1E1220;
+    --color-border:       #2E1E2A;
+    --color-text:         #F5E8EF;
+    --color-text-muted:   #A08090;
+    --color-text-disabled:#5A404E;
+    --color-primary-alpha: rgba(194, 24, 91, 0.20);
+  }
+}
