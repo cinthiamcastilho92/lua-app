@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    window.location.href = '/dashboard.html';
+    window.location.href = '/dashboard';
   }
 
   // ---- Duration picker helper ----

@@ -12,22 +12,22 @@
   const { data: { session } } = await sb.auth.getSession();
   const path = window.location.pathname;
 
-  const publicPages = ['/', '/index.html', '/forgot-password.html'];
-  const isPublic    = publicPages.includes(path) || path === '';
+  const publicPaths = ['/', '/index.html', '/forgot-password.html', '/forgot-password'];
+  const isPublic    = publicPaths.some(p => path === p || path === '') ;
 
   if (session && isPublic) {
-    // Check if onboarding done
     const { data: profile } = await sb
       .from('profiles')
       .select('onboarding_complete')
       .eq('id', session.user.id)
       .single();
 
-    window.location.href = profile?.onboarding_complete ? '/dashboard.html' : '/onboarding.html';
+    window.location.href = profile?.onboarding_complete ? '/dashboard' : '/onboarding';
     return;
   }
 
-  if (!session && !isPublic && path !== '/onboarding.html') {
+  const onboardingPaths = ['/onboarding', '/onboarding.html'];
+  if (!session && !isPublic && !onboardingPaths.includes(path)) {
     window.location.href = '/';
     return;
   }
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         err.style.color = 'var(--color-success)';
         err.hidden = false;
       } else {
-        window.location.href = '/onboarding.html';
+        window.location.href = '/onboarding';
       }
       setLoading(btn, false);
     });
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Settings logout / delete
   document.getElementById('btn-logout')?.addEventListener('click', async () => {
     await sb.auth.signOut();
-    window.location.href = '/';
+    window.location.replace('/');
   });
 
   document.getElementById('btn-delete-account')?.addEventListener('click', async () => {
@@ -156,7 +156,7 @@ async function redirectAfterAuth(sb) {
     .select('onboarding_complete')
     .eq('id', user.id)
     .single();
-  window.location.href = profile?.onboarding_complete ? '/dashboard.html' : '/onboarding.html';
+  window.location.href = profile?.onboarding_complete ? '/dashboard' : '/onboarding';
 }
 
 function setLoading(btn, loading) {
