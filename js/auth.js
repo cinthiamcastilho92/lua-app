@@ -22,13 +22,13 @@
       .eq('id', session.user.id)
       .single();
 
-    window.location.href = profile?.onboarding_complete ? '/dashboard' : '/onboarding';
+    window.location.replace(profile?.onboarding_complete ? '/dashboard' : '/onboarding');
     return;
   }
 
   const onboardingPaths = ['/onboarding', '/onboarding.html'];
   if (!session && !isPublic && !onboardingPaths.includes(path)) {
-    window.location.href = '/';
+    window.location.replace('/');
     return;
   }
 })();
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         err.style.color = 'var(--color-success)';
         err.hidden = false;
       } else {
-        window.location.href = '/onboarding';
+        window.location.replace('/onboarding');
       }
       setLoading(btn, false);
     });
@@ -156,7 +156,7 @@ async function redirectAfterAuth(sb) {
     .select('onboarding_complete')
     .eq('id', user.id)
     .single();
-  window.location.href = profile?.onboarding_complete ? '/dashboard' : '/onboarding';
+  window.location.replace(profile?.onboarding_complete ? '/dashboard' : '/onboarding');
 }
 
 function setLoading(btn, loading) {
