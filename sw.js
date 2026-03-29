@@ -1,7 +1,7 @@
 /* =====================================================
    Lua — Service Worker (PWA + Push Notifications)
    ===================================================== */
-const CACHE_NAME   = 'lua-v2';
+const CACHE_NAME   = 'lua-v3';
 const STATIC_SHELL = [
   '/',
   '/onboarding',
