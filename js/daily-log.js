@@ -110,8 +110,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       btn.disabled    = false;
       btn.textContent = 'Guardar Registo';
     } else {
-      successEl.hidden = false;
-      setTimeout(() => window.location.replace('/dashboard'), 1200);
+      // Replace button with a direct navigation link (reliable on Chrome iOS)
+      btn.textContent = '✓ Guardado — Voltar ao Dashboard';
+      btn.disabled = false;
+      btn.type = 'button';
+      btn.onclick = () => { window.location.href = '/dashboard'; };
     }
   });
 });
