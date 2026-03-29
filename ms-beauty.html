@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS Beauty – Milene Sousa | Sobrancelhas & Estética | Ermesinde</title>
+  <meta name="description" content="Especialista em sobrancelhas e estética em Ermesinde, Porto. Design, micropigmentação, brows lamination e muito mais." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --gold:        #C9A84C;
+      --gold-dark:   #A8892E;
+      --gold-light:  #E6D08A;
+      --gold-pale:   #F5EDD0;
+      --cream:       #F8F3EA;
+      --off-white:   #FFFDF8;
+      --dark:        #2C2A26;
+      --muted:       #7A7060;
+      --white:       #FFFFFF;
+      --nav-h:       72px;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      background: var(--off-white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+
+    .gold-line {
+      display: block; width: 60px; height: 2px;
+      background: var(--gold); margin: 0 auto 1.5rem;
+    }
+
+    .section-label {
+      font-size: .72rem; font-weight: 600; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: .5rem;
+    }
+
+    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+
+    .logo-box {
+      width: 46px; height: 46px; background: var(--gold); border-radius: 4px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; line-height: 1; gap: 2px; flex-shrink: 0;
+    }
+
+    .logo-ms {
+      font-family: 'Playfair Display', serif; font-size: 1.45rem;
+      font-weight: 700; color: var(--white); letter-spacing: -.02em;
+    }
+
+    .logo-beauty {
+      font-family: 'Montserrat', sans-serif; font-size: .42rem;
+      font-weight: 600; letter-spacing: .18em; color: var(--white); text-transform: uppercase;
+    }
+
+    .logo-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--dark); font-weight: 600; }
+
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,253,248,.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gold-pale); height: var(--nav-h);
+    }
+
+    nav.main-nav { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+
+    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+
+    .nav-links a {
+      font-size: .8rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; padding: .55rem 1.4rem;
+      border: 1.5px solid var(--gold); border-radius: 30px;
+      color: var(--gold); transition: background .2s, color .2s; white-space: nowrap;
+    }
+
+    .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--dark); border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: var(--off-white); border-bottom: 1px solid var(--gold-pale);
+      padding: 1.5rem 1.5rem 2rem; z-index: 99; flex-direction: column; gap: 1.2rem;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      font-size: .9rem; font-weight: 500; color: var(--dark);
+      letter-spacing: .05em; padding: .4rem 0; border-bottom: 1px solid var(--gold-pale);
+    }
+
+    .mobile-nav .nav-cta { margin-top: .5rem; text-align: center; display: block; padding: .8rem; }
+
+    #hero {
+      position: relative;
+      background: linear-gradient(160deg, var(--cream) 0%, var(--off-white) 60%, var(--gold-pale) 100%);
+      min-height: calc(100vh - var(--nav-h));
+      display: flex; align-items: center; overflow: hidden;
+    }
+
+    .hero-bg-wave { position: absolute; inset: 0; pointer-events: none; opacity: .18; }
+
+    .hero-content { position: relative; z-index: 1; max-width: 620px; padding-block: 5rem; }
+    .hero-content .section-label { margin-bottom: 1rem; }
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.18;
+      color: var(--dark); margin-bottom: 1.4rem;
+    }
+
+    .hero-content h1 em { color: var(--gold); font-style: italic; }
+
+    .hero-content p {
+      font-size: 1rem; color: var(--muted); font-weight: 400;
+      margin-bottom: 2.4rem; max-width: 480px;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--gold); color: var(--white);
+      font-family: 'Montserrat', sans-serif; font-size: .82rem;
+      font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      padding: .85rem 2rem; border-radius: 40px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(201,168,76,.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark); transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(201,168,76,.45);
+    }
+
+    .hero-location {
+      margin-top: 2rem; font-size: .78rem; color: var(--muted);
+      display: flex; align-items: center; gap: .4rem; font-weight: 500;
+    }
+
+    .hero-location svg { color: var(--gold); flex-shrink: 0; }
+
+    section { padding-block: 6rem; }
+
+    .section-header { text-align: center; margin-bottom: 4rem; }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--dark); margin-bottom: .4rem;
+    }
+
+    .section-header p { font-size: .92rem; color: var(--muted); max-width: 500px; margin-inline: auto; }
+
+    #servicos { background: var(--cream); }
+
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+
+    @media (min-width: 640px)  { .services-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (min-width: 900px)  { .services-grid { grid-template-columns: repeat(4,1fr); } }
+
+    .service-card {
+      background: var(--off-white); border: 1px solid var(--gold-pale);
+      border-radius: 16px; padding: 1.75rem 1.25rem 1.5rem; text-align: center;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px); box-shadow: 0 8px 32px rgba(201,168,76,.15);
+      border-color: var(--gold);
+    }
+
+    .service-icon {
+      width: 52px; height: 52px; background: var(--gold-pale); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; font-size: 1.4rem;
+    }
+
+    .service-card h3 {
+      font-size: .9rem; font-weight: 600; font-family: 'Montserrat', sans-serif;
+      color: var(--dark); line-height: 1.35; margin-bottom: .5rem;
+    }
+
+    .service-card p { font-size: .76rem; color: var(--muted); line-height: 1.55; }
+
+    #sobre { background: var(--off-white); }
+
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+
+    @media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1.2fr; } }
+
+    .about-photo-wrap { display: flex; justify-content: center; }
+
+    .about-photo {
+      width: min(300px, 80vw); height: min(300px, 80vw); border-radius: 50%;
+      overflow: hidden; border: 4px solid var(--gold);
+      box-shadow: 0 8px 40px rgba(201,168,76,.25); background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .about-photo-placeholder {
+      text-align: center; color: var(--muted); font-size: .78rem;
+      padding: 1rem; line-height: 1.6;
+    }
+
+    .about-text .section-label { margin-bottom: .75rem; }
+
+    .about-text h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 1.2rem; line-height: 1.2;
+    }
+
+    .about-text p { font-size: .92rem; color: var(--muted); margin-bottom: 1rem; }
+
+    .about-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--gold-pale); border: 1px solid var(--gold-light);
+      border-radius: 30px; padding: .4rem 1rem; font-size: .75rem;
+      font-weight: 600; color: var(--gold-dark); margin-top: .5rem;
+    }
+
+    #contacto {
+      background: linear-gradient(135deg, var(--dark) 0%, #3d3a33 100%);
+      position: relative; overflow: hidden;
+    }
+
+    #contacto::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      position: relative; z-index: 1; text-align: center;
+      max-width: 580px; margin-inline: auto;
+    }
+
+    .contact-inner .section-label { color: var(--gold-light); }
+
+    .contact-inner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--white); margin-bottom: 1rem;
+    }
+
+    .contact-inner p { font-size: .92rem; color: rgba(255,255,255,.6); margin-bottom: 2.5rem; }
+
+    .btn-instagram {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: var(--white); font-family: 'Montserrat', sans-serif;
+      font-size: .82rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      padding: .9rem 2.2rem; border-radius: 40px;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(220,39,67,.4);
+    }
+
+    .btn-instagram:hover {
+      opacity: .9; transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(220,39,67,.5);
+    }
+
+    .contact-location {
+      margin-top: 2rem; font-size: .8rem; color: rgba(255,255,255,.45);
+      display: flex; align-items: center; justify-content: center; gap: .4rem;
+    }
+
+    .contact-location svg { color: var(--gold); }
+
+    footer { background: #1e1c18; padding-block: 2rem; text-align: center; }
+
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: .75rem; }
+
+    footer .logo-box { width: 38px; height: 38px; }
+    footer .logo-ms  { font-size: 1.1rem; }
+    footer .logo-beauty { font-size: .35rem; }
+
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,.3); letter-spacing: .05em; }
+    .footer-ig { font-size: .72rem; color: var(--gold); font-weight: 500; letter-spacing: .05em; }
+
+    @media (max-width: 767px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section { padding-block: 4rem; }
+      .hero-content { padding-block: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="main-nav container">
+    <a href="#hero" class="logo" aria-label="MS Beauty">
+      <div class="logo-box" aria-hidden="true">
+        <span class="logo-ms">MS</span>
+        <span class="logo-beauty">Beauty</span>
+      </div>
+      <span class="logo-name">Milene Sousa</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#hero">Início</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://www.instagram.com/milenemsbeauty" target="_blank" rel="noopener noreferrer"
+       class="nav-cta" aria-label="Agendar via Instagram">Agendar</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+  <a href="#hero"     onclick="closeMobileNav()">Início</a>
+  <a href="#servicos" onclick="closeMobileNav()">Serviços</a>
+  <a href="#sobre"    onclick="closeMobileNav()">Sobre</a>
+  <a href="#contacto" onclick="closeMobileNav()">Contacto</a>
+  <a href="https://www.instagram.com/milenemsbeauty" target="_blank" rel="noopener noreferrer"
+     class="nav-cta">Agendar no Instagram</a>
+</nav>
+
+<section id="hero">
+  <svg class="hero-bg-wave" viewBox="0 0 1200 600" preserveAspectRatio="xMaxYMid slice"
+       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0 300 Q200 100 400 300 Q600 500 800 300 Q1000 100 1200 300 L1200 600 L0 600 Z" fill="#C9A84C"/>
+    <path d="M0 400 Q300 200 600 400 Q900 600 1200 400 L1200 600 L0 600 Z" fill="#C9A84C" opacity=".5"/>
+  </svg>
+  <div class="container">
+    <div class="hero-content">
+      <span class="section-label">Esteticista · Ermesinde, Porto</span>
+      <h1>Sobrancelhas que<br/><em>realçam</em> a sua<br/>beleza natural</h1>
+      <p>Design personalizado, micropigmentação e tratamentos de sobrancelhas e pestanas. Cada rosto é único — cada trabalho também.</p>
+      <a href="https://www.instagram.com/milenemsbeauty" target="_blank" rel="noopener noreferrer"
+         class="btn-primary" aria-label="Ver portfolio no Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        Ver Portfolio
+      </a>
+      <p class="hero-location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        Ermesinde, Porto
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">O que fazemos</span>
+      <span class="gold-line" aria-hidden="true"></span>
+      <h2>Os Nossos Serviços</h2>
+      <p>Tratamentos pensados para realçar a sua beleza com técnicas modernas e seguras.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon" aria-hidden="true">✦</div><h3>Design de Sobrancelhas</h3><p>Modelação personalizada ao formato do seu rosto para um olhar definido e harmonioso.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">🌿</div><h3>Design com Henna / Tintura</h3><p>Coloração natural ou com tintura profissional para sobrancelhas mais preenchidas e marcadas.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">✨</div><h3>Brows Lamination</h3><p>Técnica de alisamento e fixação que deixa as sobrancelhas volumosas e bem alinhadas.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">🖊</div><h3>Micropigmentação</h3><p>Resultado natural e duradouro com a técnica de micropigmentação de sobrancelhas.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">👁</div><h3>Lifting de Pestanas</h3><p>Elevação e curvatura das pestanas naturais com tintura incluída para um olhar intenso.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">🕯</div><h3>Depilação Cera & Laser</h3><p>Depilação suave a cera quente ou laser para pele lisa por mais tempo.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">🧵</div><h3>Threading Rosto Completo</h3><p>Técnica de remoção de pelos com linha — precisa, rápida e eficaz para todo o rosto.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">💧</div><h3>Limpeza de Pele</h3><p>Tratamento facial profissional para limpeza profunda, hidratação e luminosidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <!-- Para adicionar a sua foto: <img src="milene.jpg" alt="Milene Sousa" /> -->
+          <div class="about-photo-placeholder">
+            <div style="font-size:2.5rem;margin-bottom:.5rem">👤</div>
+            Adicione aqui<br/>a sua foto
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">Sobre mim</span>
+        <h2>Olá, sou a<br/>Milene Sousa</h2>
+        <p>Especialista em estética facial e sobrancelhas, apaixonada por realçar a beleza natural de cada cliente. Trabalho com técnicas modernas e produtos de qualidade para garantir resultados que duram e que se adaptam ao seu estilo de vida.</p>
+        <p>No meu estúdio em Ermesinde, Porto, cada visita é uma experiência personalizada — porque cada rosto conta uma história diferente.</p>
+        <span class="about-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          Ermesinde, Porto
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="section-label">Contacto</span>
+      <span class="gold-line" aria-hidden="true"></span>
+      <h2>Pronta para marcar<br/>a sua consulta?</h2>
+      <p>Envie uma mensagem pelo Instagram e vamos encontrar o horário ideal para si.</p>
+      <a href="https://www.instagram.com/milenemsbeauty" target="_blank" rel="noopener noreferrer"
+         class="btn-instagram" aria-label="Contactar no Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        @milenemsbeauty
+      </a>
+      <p class="contact-location">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        Ermesinde, Porto
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="#hero" class="logo" aria-label="MS Beauty">
+      <div class="logo-box" aria-hidden="true">
+        <span class="logo-ms">MS</span>
+        <span class="logo-beauty">Beauty</span>
+      </div>
+    </a>
+    <p class="footer-ig">@milenemsbeauty</p>
+    <p class="footer-copy">© 2025 MS Beauty · Milene Sousa · Ermesinde, Porto</p>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) closeMobileNav();
+  });
+</script>
+
+</body>
+</html>
