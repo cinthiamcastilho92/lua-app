@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 245" fill="none">
+  <defs>
+    <linearGradient id="moonGrad" x1="20%" y1="10%" x2="80%" y2="90%">
+      <stop offset="0%" stop-color="#EDD0C4"/>
+      <stop offset="100%" stop-color="#C4836A"/>
+    </linearGradient>
+    <linearGradient id="petalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EDD0C4"/>
+      <stop offset="100%" stop-color="#D4977E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dots top-right -->
+  <circle cx="147" cy="22" r="7"   fill="#8B4558"/>
+  <circle cx="163" cy="46" r="5"   fill="#8B4558" opacity="0.72"/>
+  <circle cx="154" cy="68" r="3.2" fill="#8B4558" opacity="0.50"/>
+
+  <!-- Crescent moon: outer r=75 center(85,98), inner r=65 center(115,98)
+       Intersection pts ≈ (123,33) and (123,163) -->
+  <path d="M 123 33
+           A 75 75 0 1 0 123 163
+           A 65 65 0 0 1 123 33 Z"
+        fill="url(#moonGrad)" fill-opacity="0.30"
+        stroke="url(#moonGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- ── Rose centered at (78,100) ── -->
+
+  <!-- Outer petals (6) -->
+  <path d="M 78 100 C 55 88, 48 68, 63 58 C 72 52, 82 62, 78 100 Z"
+        fill="url(#petalGrad)" fill-opacity="0.75" stroke="#C4836A" stroke-width="1.2"/>
+  <path d="M 78 100 C 78 74, 90 58, 104 60 C 115 62, 112 80, 78 100 Z"
+        fill="url(#petalGrad)" fill-opacity="0.75" stroke="#C4836A" stroke-width="1.2"/>
+  <path d="M 78 100 C 105 90, 118 100, 114 116 C 110 128, 95 126, 78 100 Z"
+        fill="url(#petalGrad)" fill-opacity="0.75" stroke="#C4836A" stroke-width="1.2"/>
+  <path d="M 78 100 C 78 128, 68 140, 55 136 C 44 132, 46 116, 78 100 Z"
+        fill="url(#petalGrad)" fill-opacity="0.75" stroke="#C4836A" stroke-width="1.2"/>
+  <path d="M 78 100 C 50 112, 40 100, 44 86 C 48 74, 64 76, 78 100 Z"
+        fill="url(#petalGrad)" fill-opacity="0.75" stroke="#C4836A" stroke-width="1.2"/>
+
+  <!-- Inner petals (4) -->
+  <path d="M 78 100 C 64 88, 62 76, 70 70 C 77 65, 84 76, 78 100 Z"
+        fill="#D4977E" fill-opacity="0.85" stroke="#C4836A" stroke-width="1"/>
+  <path d="M 78 100 C 94 88, 100 78, 96 70 C 91 63, 81 72, 78 100 Z"
+        fill="#D4977E" fill-opacity="0.85" stroke="#C4836A" stroke-width="1"/>
+  <path d="M 78 100 C 98 104, 104 116, 96 122 C 88 127, 78 116, 78 100 Z"
+        fill="#D4977E" fill-opacity="0.85" stroke="#C4836A" stroke-width="1"/>
+  <path d="M 78 100 C 58 106, 52 118, 60 124 C 68 129, 78 116, 78 100 Z"
+        fill="#D4977E" fill-opacity="0.85" stroke="#C4836A" stroke-width="1"/>
+
+  <!-- Center bud -->
+  <circle cx="78" cy="100" r="13" fill="#C4836A" fill-opacity="0.6" stroke="#B87060" stroke-width="1.2"/>
+  <circle cx="78" cy="100" r="7"  fill="#B06050" fill-opacity="0.9"/>
+  <circle cx="78" cy="100" r="3.5" fill="#8B4A3A"/>
+
+  <!-- Leaf bottom-left -->
+  <path d="M 62 122 C 56 132, 53 142, 51 154"
+        stroke="#C4836A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 58 134 C 46 130, 40 120, 44 112 C 48 106, 58 112, 58 134 Z"
+        fill="#E0B8A8" fill-opacity="0.7" stroke="#C4836A" stroke-width="1"/>
+
+  <!-- Sprout top -->
+  <path d="M 73 76 C 71 65, 70 57, 68 49"
+        stroke="#C4836A" stroke-width="1.5" stroke-linecap="round"/>
+  <ellipse cx="66" cy="52" rx="5" ry="10"
+           fill="#E0B8A8" fill-opacity="0.75" stroke="#C4836A" stroke-width="1"
+           transform="rotate(-12 66 52)"/>
+
+  <!-- LUA text -->
+  <text x="100" y="220"
+        font-family="Georgia, 'Palatino Linotype', serif"
+        font-size="36"
+        font-weight="400"
+        letter-spacing="12"
+        text-anchor="middle"
+        fill="#7A3045">LUA</text>
+</svg>

@@ -25,13 +25,9 @@
   gap: var(--space-3);
 }
 
-.auth-logo h1 {
-  font-size: var(--font-size-3xl);
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.auth-logo-img {
+  width: 160px;
+  height: auto;
 }
 
 .auth-heading {
