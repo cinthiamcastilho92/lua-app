@@ -1,7 +1,7 @@
 /* =====================================================
    Lua — Service Worker (PWA + Push Notifications)
    ===================================================== */
-const CACHE_NAME   = 'lua-v5';
+const CACHE_NAME   = 'lua-v6';
 const STATIC_SHELL = [
   '/',
   '/onboarding',
@@ -34,6 +34,7 @@ const STATIC_SHELL = [
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
+  '/icons/logo.svg',
 ];
 
 // ---- Install: pre-cache app shell ----
