@@ -27,6 +27,18 @@
   }
 
   const onboardingPaths = ['/onboarding', '/onboarding.html'];
+  if (session && onboardingPaths.includes(path)) {
+    const { data: profile } = await sb
+      .from('profiles')
+      .select('onboarding_complete')
+      .eq('id', session.user.id)
+      .single();
+    if (profile?.onboarding_complete) {
+      window.location.replace('/dashboard');
+      return;
+    }
+  }
+
   if (!session && !isPublic && !onboardingPaths.includes(path)) {
     window.location.replace('/');
     return;
@@ -65,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (error) {
         showMsg(err, 'Email ou palavra-passe incorretos.');
+        setLoading(btn, false);
       } else {
-        await redirectAfterAuth(sb);
+        window.location.replace('/onboarding');
       }
-      setLoading(btn, false);
     });
   }
 
