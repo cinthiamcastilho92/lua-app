@@ -157,7 +157,17 @@ function getUpcomingEvents(profile, from = new Date()) {
   }
 
   events.sort((a, b) => a.date - b.date);
-  return events.slice(0, 5);
+
+  // Deduplicate by type + date (guards against any calculation rounding)
+  const seen = new Set();
+  const unique = events.filter(ev => {
+    const key = `${ev.type}-${ev.date.toDateString()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  return unique.slice(0, 5);
 }
 
 // ---- Date utilities ----
