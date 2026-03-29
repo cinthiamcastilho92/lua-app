@@ -107,12 +107,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (error) {
       luaAuth.showMsg(errEl, 'Erro ao guardar o registo. Tenta novamente.');
+      btn.disabled    = false;
+      btn.textContent = 'Guardar Registo';
     } else {
       successEl.hidden = false;
-      successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setTimeout(() => window.location.replace('/dashboard'), 1200);
     }
-
-    btn.disabled    = false;
-    btn.textContent = 'Guardar Registo';
   });
 });

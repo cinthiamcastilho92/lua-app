@@ -141,8 +141,8 @@ function getUpcomingEvents(profile, from = new Date()) {
   let { periodStart } = calculateCycle(profile, from);
 
   for (let i = 0; i < 3; i++) {
-    const nextPeriodStart = addDays(periodStart, i === 0 ? profile.cycle_length : profile.cycle_length * i);
-    const ovDay           = addDays(periodStart, profile.cycle_length - 14 + profile.cycle_length * i);
+    const nextPeriodStart = addDays(periodStart, profile.cycle_length * (i + 1));
+    const ovDay           = addDays(nextPeriodStart, profile.cycle_length - 14);
     const fertileS        = addDays(ovDay, -5);
 
     if (nextPeriodStart > today) {
