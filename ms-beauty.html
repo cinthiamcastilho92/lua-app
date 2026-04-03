@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MS Beauty – Milene Sousa | Ermesinde, Porto</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--g:#C9A84C;--gd:#A8892E;--gp:#F5EDD0;--cr:#F8F3EA;--ow:#FFFDF8;--dk:#2C2A26;--mt:#7A7060;--wh:#fff;--nh:68px}
+body{font-family:'Montserrat',sans-serif;color:var(--dk);background:var(--ow);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Playfair Display',serif}
+a{text-decoration:none;color:inherit}
+.con{width:min(1100px,92%);margin-inline:auto}
+/* NAV */
+header{position:sticky;top:0;z-index:100;background:rgba(255,253,248,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--gp);height:var(--nh)}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.6rem}
+.lbox{width:42px;height:42px;background:var(--g);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.lms{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;line-height:1}
+.lbt{font-size:.38rem;font-weight:600;letter-spacing:.18em;color:#fff;text-transform:uppercase}
+.lname{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600}
+.nlinks{list-style:none;display:flex;gap:2rem}
+.nlinks a{font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--mt);transition:color .2s}
+.nlinks a:hover{color:var(--g)}
+.ncta{font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.5rem 1.2rem;border:1.5px solid var(--g);border-radius:30px;color:var(--g);transition:background .2s,color .2s;white-space:nowrap}
+.ncta:hover{background:var(--g);color:#fff}
+.hbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--dk);border-radius:2px;transition:transform .3s,opacity .3s}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav{display:none;position:fixed;top:var(--nh);left:0;right:0;background:var(--ow);border-bottom:1px solid var(--gp);padding:1.5rem;z-index:99;flex-direction:column;gap:1rem}
+.mnav.open{display:flex}
+.mnav a{font-size:.9rem;font-weight:500;color:var(--dk);padding:.4rem 0;border-bottom:1px solid var(--gp)}
+/* HERO */
+#hero{position:relative;background:linear-gradient(160deg,var(--cr) 0%,var(--ow) 60%,var(--gp) 100%);min-height:calc(100vh - var(--nh));display:flex;align-items:center;overflow:hidden}
+.hwave{position:absolute;inset:0;pointer-events:none;opacity:.15}
+.hcont{position:relative;z-index:1;max-width:600px;padding-block:4rem}
+.slbl{font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:.8rem}
+.hcont h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.18;margin-bottom:1.2rem}
+.hcont h1 em{color:var(--g);font-style:italic}
+.hcont>p{font-size:.95rem;color:var(--mt);margin-bottom:2rem;max-width:460px}
+.btnp{display:inline-flex;align-items:center;gap:.5rem;background:var(--g);color:#fff;font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.8rem;border-radius:40px;transition:background .2s,transform .15s;box-shadow:0 4px 20px rgba(201,168,76,.35)}
+.btnp:hover{background:var(--gd);transform:translateY(-2px)}
+.hloc{margin-top:1.5rem;font-size:.76rem;color:var(--mt);display:flex;align-items:center;gap:.4rem}
+/* BOOKING */
+#agendar{padding-block:5rem;background:var(--cr)}
+.sec-hd{text-align:center;margin-bottom:3rem}
+.sec-hd h2{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:.3rem}
+.sec-hd p{font-size:.9rem;color:var(--mt);max-width:480px;margin-inline:auto}
+.gline{display:block;width:50px;height:2px;background:var(--g);margin:0 auto 1rem}
+.cat{background:var(--ow);border:1px solid var(--gp);border-radius:14px;margin-bottom:.8rem;overflow:hidden}
+.cat-hd{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;text-align:left}
+.cat-ic{font-size:1.2rem;width:36px;height:36px;background:var(--gp);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-nm{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:600;color:var(--dk);flex:1}
+.cat-arr{font-size:.7rem;color:var(--g);transition:transform .3s;margin-left:auto}
+.cat.open .cat-arr{transform:rotate(180deg)}
+.cat-body{display:none;border-top:1px solid var(--gp)}
+.cat.open .cat-body{display:block}
+.svc{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.2rem;border-bottom:1px solid var(--gp);cursor:pointer;transition:background .15s}
+.svc:last-child{border-bottom:none}
+.svc:hover{background:rgba(201,168,76,.05)}
+.svc-cb{width:20px;height:20px;border:2px solid #ccc;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+.svc.sel .svc-cb{background:var(--g);border-color:var(--g)}
+.svc.sel .svc-cb::after{content:'✓';color:#fff;font-size:.75rem;font-weight:700}
+.svc-info{flex:1}
+.svc-nm{font-size:.88rem;font-weight:600;color:var(--dk);line-height:1.3}
+.svc-dt{font-size:.75rem;color:var(--mt);margin-top:.15rem}
+.svc-pr{font-size:.9rem;font-weight:700;color:var(--g);white-space:nowrap}
+/* BOOKING BAR */
+#bbar{position:fixed;bottom:0;left:0;right:0;background:var(--g);color:#fff;padding:.9rem 1.2rem;display:none;align-items:center;justify-content:space-between;gap:1rem;z-index:200;box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+#bbar.show{display:flex}
+#bsum{font-size:.82rem;font-weight:500}
+.bbtn{background:#fff;color:var(--g);font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.4rem;border-radius:30px;border:none;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+.bbtn:hover{opacity:.9}
+/* ABOUT */
+#sobre{padding-block:5rem;background:var(--ow)}
+.abgrid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:768px){.abgrid{grid-template-columns:1fr 1.2fr}}
+.abphoto{width:min(280px,80vw);height:min(280px,80vw);border-radius:50%;border:4px solid var(--g);background:var(--gp);display:flex;align-items:center;justify-content:center;margin-inline:auto;overflow:hidden;box-shadow:0 8px 40px rgba(201,168,76,.2)}
+.abphoto img{width:100%;height:100%;object-fit:cover}
+.abph-pl{text-align:center;color:var(--mt);font-size:.78rem;line-height:1.6}
+.abtxt .slbl{margin-bottom:.6rem}
+.abtxt h2{font-size:clamp(1.6rem,2.8vw,2.2rem);margin-bottom:1rem;line-height:1.2}
+.abtxt p{font-size:.9rem;color:var(--mt);margin-bottom:.9rem}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--gp);border:1px solid #E6D08A;border-radius:30px;padding:.35rem .9rem;font-size:.73rem;font-weight:600;color:var(--gd)}
+/* CONTACT */
+#contacto{padding-block:5rem;background:linear-gradient(135deg,var(--dk) 0%,#3d3a33 100%);position:relative;overflow:hidden}
+#contacto::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,.12) 0%,transparent 70%);pointer-events:none}
+.ctinn{position:relative;z-index:1;text-align:center;max-width:540px;margin-inline:auto}
+.ctinn .slbl{color:#E6D08A}
+.ctinn h2{font-size:clamp(1.7rem,3.5vw,2.6rem);color:#fff;margin-bottom:.8rem}
+.ctinn>p{font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:2rem}
+.btnig{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;border-radius:40px;box-shadow:0 4px 20px rgba(220,39,67,.4);transition:opacity .2s,transform .15s}
+.btnig:hover{opacity:.9;transform:translateY(-2px)}
+.ctloc{margin-top:1.5rem;font-size:.78rem;color:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;gap:.35rem}
+/* FOOTER */
+footer{background:#1e1c18;padding-block:1.8rem;text-align:center}
+.ft{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.ftig{font-size:.72rem;color:var(--g);font-weight:500}
+.ftcp{font-size:.7rem;color:rgba(255,255,255,.3)}
+/* RESPONSIVE */
+@media(max-width:767px){.nlinks,.ncta{display:none}.hbg{display:flex}#agendar,#sobre,#contacto{padding-block:3.5rem}.hcont{padding-block:3rem}}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="nav con">
+  <a href="#hero" class="logo">
+    <div class="lbox"><span class="lms">MS</span><span class="lbt">Beauty</span></div>
+    <span class="lname">Milene Sousa</span>
+  </a>
+  <ul class="nlinks">
+    <li><a href="#hero">Início</a></li>
+    <li><a href="#agendar">Serviços</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://noona.pt/milenesouza" target="_blank" rel="noopener" class="ncta">Agendar</a>
+  <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+</header>
+
+<nav class="mnav" id="mnav">
+  <a href="#hero" onclick="cm()">Início</a>
+  <a href="#agendar" onclick="cm()">Serviços</a>
+  <a href="#sobre" onclick="cm()">Sobre</a>
+  <a href="#contacto" onclick="cm()">Contacto</a>
+  <a href="https://noona.pt/milenesouza" target="_blank" rel="noopener" class="ncta" style="text-align:center;padding:.7rem">Agendar</a>
+</nav>
+
+<section id="hero">
+  <svg class="hwave" viewBox="0 0 1200 600" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 300 Q200 100 400 300 Q600 500 800 300 Q1000 100 1200 300 L1200 600 L0 600Z" fill="#C9A84C"/>
+    <path d="M0 400 Q300 200 600 400 Q900 600 1200 400 L1200 600 L0 600Z" fill="#C9A84C" opacity=".5"/>
+  </svg>
+  <div class="con">
+    <div class="hcont">
+      <span class="slbl">Esteticista · Ermesinde, Porto</span>
+      <h1>Sobrancelhas que<br/><em>realçam</em> a sua<br/>beleza natural</h1>
+      <p>Design personalizado, micropigmentação e tratamentos de sobrancelhas e pestanas. Cada rosto é único — cada trabalho também.</p>
+      <a href="https://www.instagram.com/milenemsbeauty" target="_blank" rel="noopener" class="btnp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Ver Portfolio
+      </a>
+      <p class="hloc">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Ermesinde, Porto
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="agendar">
+  <div class="con">
+    <div class="sec-hd">
+      <span class="slbl">Marque a sua visita</span>
+      <span class="gline"></span>
+      <h2>Escolha os seus Serviços</h2>
+      <p>Selecione um ou mais serviços e clique em "Agendar" para escolher o horário disponível.</p>
+    </div>
+    <div id="cats"></div>
+  </div>
+</section>
+
+<div id="bbar">
+  <span id="bsum">0 serviços · 0min · 0,00€</span>
+  <button class="bbtn" onclick="window.open('https://noona.pt/milenesouza','_blank')">Agendar agora →</button>
+</div>
+
+<section id="sobre">
+  <div class="con">
+    <div class="abgrid">
+      <div>
+        <div class="abphoto">
+          <!-- <img src="milene.jpg" alt="Milene Sousa"/> -->
+          <div class="abph-pl"><div style="font-size:2.2rem;margin-bottom:.4rem">👤</div>Adicione aqui<br/>a sua foto</div>
+        </div>
+      </div>
+      <div class="abtxt">
+        <span class="slbl">Sobre mim</span>
+        <h2>Olá, sou a<br/>Milene Sousa</h2>
+        <p>Especialista em estética facial e sobrancelhas, apaixonada por realçar a beleza natural de cada cliente. Trabalho com técnicas modernas e produtos de qualidade.</p>
+        <p>No meu estúdio em Ermesinde, Porto, cada visita é uma experiência personalizada — porque cada rosto conta uma história diferente.</p>
+        <span class="badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Ermesinde, Porto
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="con">
+    <div class="ctinn">
+      <span class="slbl">Contacto</span>
+      <span class="gline"></span>
+      <h2>Pronta para marcar<br/>a sua consulta?</h2>
+      <p>Envie uma mensagem pelo Instagram ou agende diretamente pelo sistema de reservas.</p>
+      <a href="https://www.instagram.com/milenemsbeauty" target="_blank" rel="noopener" class="btnig">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @milenemsbeauty
+      </a>
+      <p class="ctloc">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Ermesinde, Porto
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="con ft">
+    <a href="#hero" class="logo">
+      <div class="lbox"><span class="lms">MS</span><span class="lbt">Beauty</span></div>
+    </a>
+    <p class="ftig">@milenemsbeauty</p>
+    <p class="ftcp">© 2025 MS Beauty · Milene Sousa · Ermesinde, Porto</p>
+  </div>
+</footer>
+
+<script>
+const DATA = [
+  {cat:"Sobrancelhas",icon:"✦",items:[
+    {n:"Custom Beauty Design",d:30,p:11},
+    {n:"Custom Beauty Design + Henna",d:45,p:17},
+    {n:"Custom Beauty Design + Tintura",d:45,p:17},
+    {n:"Brow Lamination",d:60,p:35},
+    {n:"Micropigmentação",d:150,p:120},
+    {n:"Retoque Micropigmentação",d:80,p:30}
+  ]},
+  {cat:"Pestanas",icon:"👁",items:[
+    {n:"Lifting",d:60,p:30},
+    {n:"Tintura",d:15,p:5}
+  ]},
+  {cat:"Threading",icon:"🧵",items:[
+    {n:"Buço",d:10,p:7},
+    {n:"Queixo",d:15,p:7},
+    {n:"Face (inclui maçã do rosto)",d:30,p:10},
+    {n:"Maçã do rosto",d:20,p:7},
+    {n:"Rosto completo",d:60,p:25}
+  ]},
+  {cat:"Packs",icon:"⭐",items:[
+    {n:"Custom Beauty — Design + Henna + Buço + Spa dos lábios",d:60,p:23},
+    {n:"Custom Beauty Experience — Design + Lifting + Spa dos lábios",d:120,p:36},
+    {n:"Custom Beauty Deluxe — Design + Brows Lamination + Lifting",d:160,p:68},
+    {n:"Sobrancelhas e Buço",d:30,p:17}
+  ]},
+  {cat:"Depilação Laser",icon:"✨",items:[
+    {n:"Corpo Completo",d:90,p:65},
+    {n:"Axila + Virilha",d:30,p:28},
+    {n:"Virilha + Perna",d:40,p:35},
+    {n:"Axila + Virilha + Meia Perna",d:60,p:40},
+    {n:"Rosto",d:20,p:15},
+    {n:"Buço",d:5,p:8},
+    {n:"Axila",d:20,p:10},
+    {n:"Virilha",d:30,p:20},
+    {n:"Meia Perna",d:30,p:15},
+    {n:"Perna completa",d:60,p:30}
+  ]},
+  {cat:"Estética Facial",icon:"💧",items:[
+    {n:"Limpeza de pele",d:120,p:35},
+    {n:"Peeling clareador",d:30,p:28}
+  ]}
+];
+
+let sel = new Set();
+
+function render(){
+  const wrap = document.getElementById('cats');
+  wrap.innerHTML = DATA.map((c,ci)=>`
+    <div class="cat" id="cat${ci}">
+      <button class="cat-hd" onclick="toggle(${ci})">
+        <div class="cat-ic">${c.icon}</div>
+        <span class="cat-nm">${c.cat}</span>
+        <span class="cat-arr">▼</span>
+      </button>
+      <div class="cat-body">
+        ${c.items.map((s,si)=>{
+          const id=`${ci}-${si}`;
+          return`<div class="svc${sel.has(id)?' sel':''}" onclick="pick('${id}')">
+            <div class="svc-cb"></div>
+            <div class="svc-info">
+              <div class="svc-nm">${s.n}</div>
+              <div class="svc-dt">${s.d} min</div>
+            </div>
+            <div class="svc-pr">${s.p},00€</div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function toggle(ci){
+  document.getElementById('cat'+ci).classList.toggle('open');
+}
+
+function pick(id){
+  sel.has(id)?sel.delete(id):sel.add(id);
+  render();
+  updateBar();
+}
+
+function updateBar(){
+  const bar=document.getElementById('bbar');
+  if(!sel.size){bar.classList.remove('show');return;}
+  let mins=0,euros=0;
+  sel.forEach(id=>{
+    const[ci,si]=id.split('-').map(Number);
+    mins+=DATA[ci].items[si].d;
+    euros+=DATA[ci].items[si].p;
+  });
+  const n=sel.size;
+  document.getElementById('bsum').textContent=`${n} serviço${n>1?'s':''} · ${mins}min · ${euros.toFixed(2).replace('.',',')}€`;
+  bar.classList.add('show');
+}
+
+// Hamburger
+const hbg=document.getElementById('hbg'),mnav=document.getElementById('mnav');
+hbg.addEventListener('click',()=>{
+  const o=mnav.classList.toggle('open');
+  hbg.classList.toggle('open',o);
+});
+function cm(){mnav.classList.remove('open');hbg.classList.remove('open');}
+document.addEventListener('click',e=>{if(!hbg.contains(e.target)&&!mnav.contains(e.target))cm();});
+
+render();
+</script>
+</body>
+</html>
