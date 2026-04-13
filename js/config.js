@@ -23,4 +23,4 @@ function getSupabase() {
 }
 
 // VAPID public key for web push (generate your own with web-push CLI)
-const VAPID_PUBLIC_KEY = 'YOUR_VAPID_PUBLIC_KEY';
+const VAPID_PUBLIC_KEY = 'BAnp5EHtT31K3SFvSSRQQW3OQuqsPGlrdIiChOqQ5gRNwEw_vv95_IVwZtoY1wsOxlo_wui2XG2TYSCY5lYvqUw';

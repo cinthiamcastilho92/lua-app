@@ -37,7 +37,7 @@ async function enablePushNotifications() {
       endpoint: subJson.endpoint,
       p256dh:   subJson.keys.p256dh,
       auth:     subJson.keys.auth,
-    }, { onConflict: 'user_id' });
+    }, { onConflict: 'endpoint' });
 
     return true;
   } catch (err) {
@@ -64,4 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-window.luaNotifications = { enablePushNotifications };
+async function saveNotifPreference(column, value) {
+  const sb = getSupabase();
+  if (!sb) return;
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) return;
+  await sb.from('profiles').update({ [column]: value }).eq('id', user.id);
+}
+
+window.luaNotifications = { enablePushNotifications, saveNotifPreference };
