@@ -11,7 +11,12 @@ async function enablePushNotifications() {
   if (!sb) return false;
 
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) {
-    alert('O teu browser não suporta notificações push.');
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    if (isIOS) {
+      alert('No iPhone, as notificações só funcionam quando a app está instalada no ecrã inicial. Adiciona ao ecrã inicial e tenta novamente.');
+    } else {
+      alert('O teu browser não suporta notificações push.');
+    }
     return false;
   }
 
@@ -42,6 +47,7 @@ async function enablePushNotifications() {
     return true;
   } catch (err) {
     console.error('Push subscription failed:', err);
+    alert('Erro ao ativar notificações: ' + (err.message || err));
     return false;
   }
 }
