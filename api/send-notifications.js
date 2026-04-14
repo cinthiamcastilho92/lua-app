@@ -18,11 +18,6 @@ const supabase = createClient(
 );
 
 module.exports = async function handler(req, res) {
-  // Only Vercel Cron (or manual test with secret) may call this
-  const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret && req.headers['authorization'] !== `Bearer ${cronSecret}`) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
 
   // Fetch all users who have at least one notification enabled and a period date set
   const { data: profiles, error: profilesError } = await supabase
