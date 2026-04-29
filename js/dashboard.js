@@ -81,33 +81,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // ---- Mark period start ----
-  const picker      = document.getElementById('period-date-picker');
-  const dateInput   = document.getElementById('period-date-input');
-  const btnConfirm  = document.getElementById('btn-period-confirm');
-  const btnCancel   = document.getElementById('btn-period-cancel');
+  const dateInput  = document.getElementById('period-date-input');
+  const btnConfirm = document.getElementById('btn-period-confirm');
 
-  // Default to today
   dateInput.value = new Date().toISOString().split('T')[0];
   dateInput.max   = new Date().toISOString().split('T')[0];
-
-  document.getElementById('btn-mark-period')?.addEventListener('click', () => {
-    picker.hidden = !picker.hidden;
-  });
-
-  btnCancel?.addEventListener('click', () => {
-    picker.hidden = true;
-  });
 
   btnConfirm?.addEventListener('click', async () => {
     const date = dateInput.value;
     if (!date) return;
-    btnConfirm.disabled = true;
+    btnConfirm.disabled    = true;
+    btnConfirm.textContent = 'A guardar…';
     const { error: updateError } = await sb
       .from('profiles')
       .update({ last_period_date: date })
       .eq('id', user.id);
     if (!updateError) window.location.reload();
-    else btnConfirm.disabled = false;
+    else { btnConfirm.disabled = false; btnConfirm.textContent = 'Guardar data do período'; }
   });
 
   // ---- Phase info modal ----
