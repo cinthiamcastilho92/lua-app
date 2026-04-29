@@ -75,10 +75,18 @@
       <button class="quick-log-card quick-period-btn" id="btn-mark-period" style="width:100%;border:none;cursor:pointer;margin-top:10px;background:var(--clr-surface);">
         <div class="quick-log-icon">🩸</div>
         <div class="quick-log-text">
-          <span class="quick-log-title">Período começou hoje</span>
-          <span class="quick-log-sub">Atualizar início do ciclo</span>
+          <span class="quick-log-title">Registar início do período</span>
+          <span class="quick-log-sub">Atualizar data do ciclo</span>
         </div>
       </button>
+      <div id="period-date-picker" hidden style="margin-top:12px;padding:16px;background:var(--clr-surface);border-radius:12px;">
+        <label style="display:block;font-size:14px;color:var(--clr-text-secondary);margin-bottom:8px;">Quando começou o teu período?</label>
+        <input type="date" id="period-date-input" style="width:100%;padding:10px;border:1px solid var(--clr-border);border-radius:8px;font-size:16px;color:var(--clr-text);background:var(--clr-bg);box-sizing:border-box;" />
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <button id="btn-period-cancel" class="btn btn-outline" style="flex:1;">Cancelar</button>
+          <button id="btn-period-confirm" class="btn btn-primary" style="flex:1;">Confirmar</button>
+        </div>
+      </div>
     </section>
 
     <!-- Upcoming Events -->

@@ -81,14 +81,33 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // ---- Mark period start ----
-  document.getElementById('btn-mark-period')?.addEventListener('click', async () => {
-    if (!confirm('Marcar hoje como início do teu período?')) return;
-    const today = new Date().toISOString().split('T')[0];
+  const picker      = document.getElementById('period-date-picker');
+  const dateInput   = document.getElementById('period-date-input');
+  const btnConfirm  = document.getElementById('btn-period-confirm');
+  const btnCancel   = document.getElementById('btn-period-cancel');
+
+  // Default to today
+  dateInput.value = new Date().toISOString().split('T')[0];
+  dateInput.max   = new Date().toISOString().split('T')[0];
+
+  document.getElementById('btn-mark-period')?.addEventListener('click', () => {
+    picker.hidden = !picker.hidden;
+  });
+
+  btnCancel?.addEventListener('click', () => {
+    picker.hidden = true;
+  });
+
+  btnConfirm?.addEventListener('click', async () => {
+    const date = dateInput.value;
+    if (!date) return;
+    btnConfirm.disabled = true;
     const { error: updateError } = await sb
       .from('profiles')
-      .update({ last_period_date: today })
+      .update({ last_period_date: date })
       .eq('id', user.id);
     if (!updateError) window.location.reload();
+    else btnConfirm.disabled = false;
   });
 
   // ---- Phase info modal ----
