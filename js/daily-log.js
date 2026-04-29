@@ -108,6 +108,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (error) {
       luaAuth.showMsg(errEl, 'Erro ao guardar o registo. Tenta novamente.');
     } else {
+      // If flow was logged and this is today, offer to mark as period start
+      if (flow !== 'none' && dateStr === new Date().toISOString().split('T')[0]) {
+        const { data: prof } = await sb.from('profiles').select('last_period_date').eq('id', user.id).single();
+        if (prof?.last_period_date !== dateStr) {
+          if (confirm('Queres marcar hoje como início do teu período? Isso atualiza o teu ciclo.')) {
+            await sb.from('profiles').update({ last_period_date: dateStr }).eq('id', user.id);
+          }
+        }
+      }
       successEl.hidden = false;
       successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }

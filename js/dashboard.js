@@ -79,4 +79,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('btn-settings')?.addEventListener('click', () => {
     window.location.href = '/settings.html';
   });
+
+  // ---- Mark period start ----
+  document.getElementById('btn-mark-period')?.addEventListener('click', async () => {
+    if (!confirm('Marcar hoje como início do teu período?')) return;
+    const today = new Date().toISOString().split('T')[0];
+    const { error: updateError } = await sb
+      .from('profiles')
+      .update({ last_period_date: today })
+      .eq('id', user.id);
+    if (!updateError) window.location.reload();
+  });
 });
