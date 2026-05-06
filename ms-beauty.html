@@ -282,7 +282,7 @@ function render(){
       <div class="cat-body">
         ${c.items.map((s,si)=>{
           const id=`${ci}-${si}`;
-          return`<div class="svc${sel.has(id)?' sel':''}" onclick="pick('${id}')">
+          return`<div class="svc${sel.has(id)?' sel':''}" data-svc="${id}" onclick="pick('${id}')">
             <div class="svc-cb"></div>
             <div class="svc-info">
               <div class="svc-nm">${s.n}</div>
@@ -301,7 +301,7 @@ function toggle(ci){
 
 function pick(id){
   sel.has(id)?sel.delete(id):sel.add(id);
-  render();
+  document.querySelector(`.svc[data-svc="${id}"]`)?.classList.toggle('sel',sel.has(id));
   updateBar();
 }
 
