@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showMsg(err, 'Email ou palavra-passe incorretos.');
         setLoading(btn, false);
       } else {
-        window.location.replace('/onboarding');
+        await redirectAfterAuth(sb);
       }
     });
   }
